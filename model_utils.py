@@ -174,9 +174,10 @@ def test_forecast(test_Y_gt, x_test, model, scaler, window_size, num_features, f
         start = start + future
     
     
-    plt.figure()
+    plt.figure(figsize=(12,6), dpi=100)
     plt.plot(test_Y_gt[start_all + window_size: start_all + window_size + future*num_inferences].array)
     plt.plot(all_predictions)
+    plt.legend(['Ground truth', 'Predictions'])
     plt.show()
     
 
