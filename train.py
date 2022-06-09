@@ -24,11 +24,15 @@ from model_utils import test_forecast
 from plot_utils import plot_series, plot_predictions, plot_training, plot_gtruth_and_predictions
 from model_utils import build_model, predict
 
+# Plot settings
+plt.style.use('seaborn')
+plt.rcParams["figure.figsize"] = (16, 8)
+pd.options.plotting.backend = "plotly"
+
 
 
 def parser_opt():
     parser = argparse.ArgumentParser(description="Train script")
-    parser.add_argument('-d','--dataset', type=str, required=False, default='ACN_data', help='Select dataset')
     parser.add_argument('-m','--model_name', type=str, required=True, help='Models available: CNN_LSTM,Simple_RNN,LSTM,LSTM_stacked,Bidirectional_LSTM,Simple_ANN')
     parser.add_argument('-w','--window_size', type=int, required=True, help='Input sequence length, 96 or 168 values (4-7 days)')
     parser.add_argument('-e','--epochs', type=int, required=True, help = 'Number of training epochs')
@@ -39,7 +43,6 @@ def parser_opt():
 
 def main(opt):
     # Input args
-    dataset = opt.dataset 
     model_name = opt.model_name 
     window_size = opt.window_size
     epochs = opt.epochs
@@ -135,17 +138,12 @@ def main(opt):
                                 callbacks = callbacks)
 
 
-
-
-
     # Save the trained model 
     model.save(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/{model_name}_ws{window_size}_epochs{epochs}_model.h5')
 
     # Plot the training and validation accuracy and loss at each epoch
     plot_training(history)
     plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/history.png')
-
-
 
 
     #%% Run predictions on training and validation set
@@ -169,23 +167,21 @@ def main(opt):
 
     #%% Plot train data
     df_train_predict = pd.DataFrame(train_predict, index = times.index[window_size:split_time])
-    # Plot predicted values
-    df_train_predict.plot()
-    # Plot ground truth
-    train_Y_gt.plot()
-    # Save plot
+    plt.figure()
+    plt.plot(train_Y_gt)
+    plt.plot(df_train_predict)
     plt.title('Predictions on train')
+    plt.legend(['Ground truth', 'Predictions'])
     plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_train.png')
 
     #%% Plot test data
     df_test_predict = pd.DataFrame(test_predict, index = times.index[split_time + window_size:])
-    # Plot predicted values
-    df_test_predict.plot()
-    # Plot ground truth
-    test_Y_gt.plot()
-    # Save Plot
-    plt.title('Predictions on train')
-    plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_train.png')
+    plt.figure()
+    plt.plot(test_Y_gt)
+    plt.plot(df_test_predict)
+    plt.title('Predictions on test')
+    plt.legend(['Ground truth', 'Predictions'])
+    plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_test.png')
 
     #%% Plot zoomed train and test data
     start = 50
@@ -193,6 +189,7 @@ def main(opt):
     plt.figure()
     plt.plot(train_Y_gt[window_size + start: window_size + end])
     plt.plot(df_train_predict.iloc[start:end])
+    plt.legend(['Ground truth', 'Predictions'])
     plt.title('Predictions on train (zoomed sample)')
     plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_train_zoom.png')
 
@@ -202,6 +199,7 @@ def main(opt):
     plt.figure()
     plt.plot(test_Y_gt[window_size + start: window_size + end])
     plt.plot(df_test_predict.iloc[start:end])
+    plt.legend(['Ground truth', 'Predictions'])
     plt.title('Predictions on test (zoomed sample)')
     plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_test_zoom.png')
 
