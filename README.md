@@ -63,13 +63,13 @@ python train.py -m CNN_LSTM -w 168 -e 30
 
 ## Main outcomes
 - Model benchmarking
-    - Main results for each model in [Results](https://github.com/curroramos/EV_Charging_Load_Prediction/tree/main/Results) directory
+    - Main results for each model in [Results]() directory
 
 ## Results
 ### Prediction benchmarking
-![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/benchmarking_table.png)
+![alt text]()
 
-![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/Figure%202022-03-22%20200750.png)
+![alt text]()
 
 ### Real time showcase
-![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/Results/real_time.gif)
+![alt text]()
