@@ -71,9 +71,7 @@ python train.py -m CNN_LSTM -w 168 -e 30
     - Main results for each model in [Results]() directory
 
 ## Results
-### Prediction benchmarking
-![alt text]()
-
+### Prediction benchmark
 ![alt text]()
 
 ### Real time showcase
