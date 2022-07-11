@@ -47,10 +47,15 @@ The content is arranged in different folders:
 ## Get started
 Please refer to installation
 
-## Utilization
+## Usage
+
+To perform a train use this command:
+
 ```sh
-python train.py -m CNN_LSTM -w 168 -e 30
+python train.py -m $MODEL -w $WINDOW_SIZE -e $EPOCHS
 ```
+
+Examples:
 
 ```
 python train.py -m Simpler_RNN -w 168 -e 30 \
