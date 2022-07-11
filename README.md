@@ -67,12 +67,19 @@ python train.py -m CNN_LSTM -w 168 -e 30
 ```
 
 ## Main outcomes
-- Model benchmarking
+- Model benchmark
     - Main results for each model in [Results]() directory
 
 ## Results
+### Test
+![alt text](https://github.com/curroramos/PV_Solar_Power_Prediction/blob/main/Figures/pred_fut4.png)
+
 ### Prediction benchmark
-![alt text]()
+![alt text](https://github.com/curroramos/PV_Solar_Power_Prediction/blob/main/Figures/bench_pv.png)
+
+![alt text](https://github.com/curroramos/PV_Solar_Power_Prediction/blob/main/Figures/predcom_fut1.png)
+
+
 
 ### Real time showcase
-![alt text]()
+![alt text](https://github.com/curroramos/PV_Solar_Power_Prediction/blob/main/Figures/PV_realtime.mov)
