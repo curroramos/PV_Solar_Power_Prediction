@@ -12,7 +12,7 @@ This repository hosts the files of the project *Deep Learning Applications to Op
 
 ## Content
 The content is arranged in different folders:
-- `Root folder`: contains basic [train.py](train.py) script, also contains a [train_demo.ipynb](train_demo.ipynb) and [test_demo.ipynb](test_demo.ipynb) jupyter notebooks to get started into training models and making inferences.
+- `Root folder`: contains basic [train.py](train.py) script  and [test_demo.ipynb](test_demo.ipynb) jupyter notebooks.
 - `data_preprocessing\`: contains files related to first data processing and visualization. Also contains the datasets in [raw_data](raw_data), [preprocessed_data](preprocessed_data), [processed_data](processed_data) 
 
 ```bash
